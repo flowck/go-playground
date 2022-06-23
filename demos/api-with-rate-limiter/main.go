@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/httprate"
 	"net/http"
 	"time"
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	r := chi.NewRouter()
+	r.Use(middleware.Logger)
 
 	// Use httprate middleware to limit requests give the following rules:
 	// 10 requests per IP per minute;
